@@ -1,14 +1,13 @@
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import "./header.css"
 const Header = () => {
   return (
     <header>
+        <Link style={{textDecoration: "none"}} to={"/"}>
        <h2 className="header-logo">&lt;/<span className="header-logo-span">DevTalent</span>&gt;</h2>
-
+       </Link>
         <nav>
             <ul>
-            <li><NavLink to="/">Hola</NavLink></li>
-            <li><NavLink to="/about">about</NavLink></li>
         <button className="logout">logout</button>
                 </ul>
         </nav>
