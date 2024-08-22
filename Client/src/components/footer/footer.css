@@ -1,0 +1,14 @@
+footer{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    background-color: var(--periwinkle);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+footer a{
+    text-decoration: none;
+    color: rgb(0, 102, 255);
+}

@@ -1,0 +1,40 @@
+.header-logo-span{
+    color: var( --ghost-white);
+    
+}
+.header-logo{
+    color: var(--ghost-white);
+    cursor: pointer;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    padding: 1rem;
+    align-items: center;
+}
+nav ul{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    list-style: none;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+.logout{
+    border: 0;
+    padding: .5rem 2rem;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid var(--ghost-white);
+    cursor: pointer;
+    transition: .2s ease;
+    background-color: var( --black);
+}
+.logout:hover{
+    transform: scale(1.1);
+}
