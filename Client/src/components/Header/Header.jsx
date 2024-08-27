@@ -1,6 +1,7 @@
-import { Link, NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 import "./header.css"
 const Header = () => {
+ 
   return (
     <header>
         <Link style={{textDecoration: "none"}} to={"/"}>
@@ -8,7 +9,7 @@ const Header = () => {
        </Link>
         <nav>
             <ul>
-        <button className="logout">logout</button>
+        <Link to="/account" className="logout">logout</Link>
                 </ul>
         </nav>
     </header>

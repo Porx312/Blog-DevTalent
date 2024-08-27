@@ -1,24 +1,34 @@
-import React from 'react'
-import {Route,Routes, BrowserRouter} from "react-router-dom"
-import Home from '../components/home/Home'
-import About from '../components/About/About'
-import Header from '../components/Header/Header'
-import Footer from '../components/footer/Footer'
-import Crearpost from '../components/create/Crearpost'
-import UpdatePost from '../components/create/UpdatePost'
-const MyApp = () => {
-  return (
-          <BrowserRouter>
-          <Header/>
-       <Routes>
-  <Route path="/" element={<Home />} />
-  <Route path="/crear" element={<Crearpost/>} />
-  <Route path="/update" element={<UpdatePost/>} />
-  <Route path="/about" element={<About/>} />
-</Routes>
-    <Footer/>
-          </BrowserRouter>
-  )
-}
+import React, { useState } from 'react';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import Home from '../components/home/Home';
+import Crearpost from '../components/create/Crearpost';
+import Auth from '../auth/Auth';
+import PrivateRoute from './PrivateRoute';
+import DetailView from '../components/details/DetailView';
 
-export default MyApp
+const MyApp = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Ruta pública para autenticación */}
+        <Route path='/account' element={<Auth setIsAuthenticated={setIsAuthenticated} />} />
+
+        {/* Rutas privadas que requieren autenticación */}
+        <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
+          {/* Ruta principal */}
+          <Route path='/' element={<Home />} />
+
+          {/* Ruta para crear un post */}
+          <Route path='/crear' element={<Crearpost />} />
+
+          {/* Ruta para ver detalles de un post */}
+          <Route path='/details/:id' element={<DetailView />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default MyApp;

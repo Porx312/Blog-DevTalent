@@ -41,7 +41,7 @@
     outline: none;
     color: dimgray;
   }
-  .texarea{
+  .textarea{
     height: 100%;
   }
   .input-create:invalid {

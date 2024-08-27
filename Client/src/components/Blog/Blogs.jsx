@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./blogs.css"
 import Blog from './Blog'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import { API } from '../../service/api'
 const Blogs = () => {
+  const [posts, getPosts] = useState([]);
+    
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get('category');
+
+  useEffect(() => {
+      const fetchData = async () => { 
+          let response = await API.getAllPosts({ category : category || '' });
+          if (response.isSuccess) {
+              getPosts(response.data);
+          }
+      }
+      fetchData();
+  }, [category]);
   return (
+   
    <section className='blogs-content'>
     <h2 className='blogs-content-h2'>Proyectos</h2>
     <Link to={"crear"} className='crear-blog'>
@@ -12,14 +28,9 @@ const Blogs = () => {
   </span>
 </Link>
     <section className='blogs-contents-proyect'>
-        <Blog/>
-        <Blog/>
-        <Blog/>
-        <Blog/>
-        <Blog/>
-        <Blog/>
-        <Blog/>
-        <Blog/>
+    {posts?.length ? posts.map(post => 
+      <Blog key={post._id} post={post}/>
+ ) : ""}
     </section>
    </section>
   )

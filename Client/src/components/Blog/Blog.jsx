@@ -2,18 +2,23 @@ import React from 'react'
 import proyect from "../../assets/prouecto.jpg"
 import github from "../../assets/icons8-github-24.png"
 import arrow from "../../assets/right-arrow.png"
-const Blog = () => {
+import { Link } from 'react-router-dom'
+const Blog = ({post}) => {
+  const addEllipsis = (str, limit) => {
+    return str.length > limit ? str.substring(0, limit) + '...' : str;
+} 
   return (
-    <article className='blog-item'>
+    <article  className='blog-item'>
         <div className="image-content">
             <img src={proyect} alt="proyect" />
         </div>
         <div className="text-content-blog">
-            <h2 className='blog-item-text'>Blog de Nft</h2>
-            <p>este es un blog de nft que he creado con diferentes lengujaes y lo he hecho paso a paso</p>
+            <h4>Author: {post.username}</h4>
+            <h2 className='blog-item-text'>{addEllipsis(post.title, 20)}</h2>
+            <p>{addEllipsis(post.description, 100)}</p>
         </div>
         <div className="more">
-            <button className='leer-mas'><img src={arrow} alt="arrow" /></button>
+            <Link to={`details/${post._id}`} className='leer-mas'><img src={arrow} alt="arrow" /></Link>
             <a className='github-link' href="#"><img src={github} alt="githublogo" /></a>
         </div>
     </article>

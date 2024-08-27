@@ -33,6 +33,7 @@ nav ul li a{
     border: 1px solid var(--ghost-white);
     cursor: pointer;
     transition: .2s ease;
+    text-decoration: none;
     background-color: var( --black);
 }
 .logout:hover{
